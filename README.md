@@ -30,12 +30,10 @@
 git clone https://github.com/Tools1208/web-scan.git
 cd web-scan
 
-``` bash 
-++ Install ** 
+
+** Install ** 
 
 pip install -r requirements.txt
-
-```bash
 
 ** Use Tool **
 
@@ -45,5 +43,5 @@ python main.py -u https://test.com -t 50 -o scan_results.txt
 
 python main.py -u https://example.com --proxy http://127.0.0.1:8080 -t 50 -o report.json
 
-```bash 
+** Start ** 
 python main.py

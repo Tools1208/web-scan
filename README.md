@@ -28,8 +28,10 @@
 ### 1. نسخ المشروع:
 ```bash
 git clone https://github.com/Tools1208/web-scan.git
+
 cd web-scan
 
+chmod +x main.py
 
 ** Install ** 
 

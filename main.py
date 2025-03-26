@@ -5,25 +5,21 @@ import os
 
 def install_dependencies():
     try:
-        # محاولة استيراد المكتبات المطلوبة
         import requests
         import colorama
         import bs4
     except ImportError:
-        # إذا فشل الاستيراد، قم بتثبيت المتطلبات تلقائيًا
-        print("[!] جارٍ تثبيت المتطلبات...")
+        print("[!] Installing required dependencies...")
         try:
             subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
         except subprocess.CalledProcessError:
-            print("[!] فشل في تثبيت المتطلبات")
+            print("[!] Failed to install dependencies")
             sys.exit(1)
-        print("[+] done install , please start the tool anthor.")
+        print("[+] Dependencies installed successfully. Please restart the tool.")
         sys.exit()
 
-# التحقق من التبعيات عند التشغيل
 install_dependencies()
 
-# استيراد المكتبات بعد التأكد من تثبيتها
 import argparse
 from colorama import Fore, Style, init
 from modules.scanner import WebScanner
@@ -41,6 +37,10 @@ BANNER = """
 """
 
 def main():
+    print(BANNER)
+    print(Fore.CYAN + "Tool Created By: Anonymous Jordan")
+    print(Fore.CYAN + "Telegram: https://t.me/AnonymousJordan\n")
+    
     parser = argparse.ArgumentParser(description="WebScanner - Advanced Web Vulnerability Scanner")
     parser.add_argument('-u', '--url', help="Target URL (e.g., http://example.com)")
     parser.add_argument('--proxy', help="Proxy (e.g., http://127.0.0.1:8080)")
@@ -48,8 +48,6 @@ def main():
     parser.add_argument('-o', '--output', help="Output file (JSON/TXT)")
     args = parser.parse_args()
 
-    print(BANNER)
-    
     if not args.url:
         show_menu()
         return

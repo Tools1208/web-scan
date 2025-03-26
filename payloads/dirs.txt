@@ -1,0 +1,7 @@
+admin
+login
+wp-admin
+backup
+.git
+.htaccess
+robots.txt

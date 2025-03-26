@@ -1,10 +1,33 @@
-import os
+#!/usr/bin/env python3
 import sys
+import subprocess
+import os
+
+def install_dependencies():
+    try:
+        # محاولة استيراد المكتبات المطلوبة
+        import requests
+        import colorama
+        import bs4
+    except ImportError:
+        # إذا فشل الاستيراد، قم بتثبيت المتطلبات تلقائيًا
+        print("[!] جارٍ تثبيت المتطلبات...")
+        try:
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
+        except subprocess.CalledProcessError:
+            print("[!] فشل في تثبيت المتطلبات")
+            sys.exit(1)
+        print("[+] done install , please start the tool anthor.")
+        sys.exit()
+
+# التحقق من التبعيات عند التشغيل
+install_dependencies()
+
+# استيراد المكتبات بعد التأكد من تثبيتها
 import argparse
-import time
+from colorama import Fore, Style, init
 from modules.scanner import WebScanner
 from modules.reporter import generate_report
-from colorama import Fore, Style, init
 
 init(autoreset=True)
 
